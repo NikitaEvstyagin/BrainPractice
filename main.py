@@ -19,12 +19,8 @@ def has_hands(frame, thresh, model):
     if model == "mediapipe":
         if mediapipe == None:
             mediapipe = setup_mediapipe()
-            if mediapipe.mediapipe_for_images(frame):
-                return True
-            return False
-        elif mediapipe.mediapipe_for_images(frame):
-            return True
-        return False
+            return bool(mediapipe.mediapipe_for_images(frame))
+        return bool(mediapipe.mediapipe_for_images(frame))
     elif model == "handobj":
         if yolo == None:
             yolo = setup_yolo()
